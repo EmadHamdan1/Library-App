@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddBookActivity">
+
+    <ImageView
+        android:id="@+id/backIvAddBook"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Add Book"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/backIvAddBook"
+        app:layout_constraintStart_toEndOf="@+id/backIvAddBook"
+        app:layout_constraintTop_toTopOf="@+id/backIvAddBook" />
+
+    <ImageView
+        android:id="@+id/bookImageAddBook"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/add_book_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameBookTl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:background="#E6EAFF"
+        android:elevation="1dp"
+        android:hint="@string/name_hint_AddBook"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#3F51B5"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#3F51B5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookImageAddBook">
+
+        <EditText
+            android:id="@+id/nameBookEtAddBook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/priceBookTl"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:background="#E6EAFF"
+        android:elevation="1dp"
+        android:hint="@string/price_bookAddBook"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#3F51B5"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#3F51B5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameBookTl">
+
+        <EditText
+            android:id="@+id/priceBookEtAddBook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/quantityBookTl"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+        android:background="#E6EAFF"
+        android:elevation="1dp"
+        android:hint="@string/quantity_book_AddBook"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#3F51B5"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#3F51B5"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameBookTl">
+
+        <EditText
+            android:id="@+id/quantityBookEtAddBook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dickBookTl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="18dp"
+        android:background="#E6EAFF"
+        android:elevation="1dp"
+        android:hint="@string/description_book_AddBook"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#3F51B5"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#3F51B5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quantityBookTl">
+
+        <EditText
+            android:id="@+id/dickBookEtAddBook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tackPriceBookTl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="18dp"
+        android:background="#E6EAFF"
+        android:elevation="1dp"
+        android:hint="@string/tack_price_book_AddBook"
+        android:textColorHint="#525252"
+        app:boxStrokeColor="#3F51B5"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="#3F51B5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dickBookTl">
+
+        <EditText
+            android:id="@+id/tackPriceBookEtAddBook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/addBookBtAddBook"
+        style="@style/ElevatedButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:text="@string/add_book_AddBook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tackPriceBookTl" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

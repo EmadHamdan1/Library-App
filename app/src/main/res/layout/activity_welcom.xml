@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomActivity">
+
+    <ImageView
+        android:id="@+id/helloIv"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:src="@drawable/hello"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/discoverTv"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:lineHeight="55dp"
+        android:text="Discover Your  Dream Job Here"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/helloIv" />
+
+    <TextView
+        android:id="@+id/textTv"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Discover Your  Dream Job HereDiscover Your  Dream Job HereDiscover"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/discoverTv" />
+
+    <Button
+        android:id="@+id/loginBt"
+        style="@style/ElevatedButtonStyle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:padding="15dp"
+        android:text="Login"
+        app:layout_constraintEnd_toStartOf="@+id/regesBt"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTv" />
+
+    <Button
+        android:id="@+id/regesBt"
+        style="@style/ElevatedButtonStyleReg"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:padding="15dp"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/loginBt"
+        app:layout_constraintTop_toBottomOf="@id/textTv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

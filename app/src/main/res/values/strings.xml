@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">My Application MIni Project</string>
+    <string name="sign_in">Login here</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in_bt">Sign In</string>
+    <string name="welcome_text_Login">Welcome back you`ve been missed!</string>
+    <string name="email_hint_login">Email</string>
+    <string name="password_hint_login">Password</string>
+    <string name="sign_in_bt_login">Sign in</string>
+    <string name="create_account_text_login">Create new account</string>
+    <string name="sign_up_title">Sign Up</string>
+    <string name="create_account_title">Create Account</string>
+    <string name="name_hint_login">Name</string>
+    <string name="owner_Rb">Owner</string>
+    <string name="customer_Rb_SignUp">Customer</string>
+    <string name="good_nafternoon_Home">Good \nAfternoon,</string>
+    <string name="diane_lane_name_Home">Diane Lane</string>
+    <string name="search_for_books_hint_Home">Search for Books ...</string>
+    <string name="new_arrivals_title_Home">New Arrivals</string>
+    <string name="view_all_text_Home"><![CDATA[View all >]]></string>
+    <string name="best_ever_book_lists_Home">Best Ever Book Lists</string>
+    <string name="your_books_Owner">Your Books</string>
+    <string name="name_hint_AddBook">Name</string>
+    <string name="price_bookAddBook">Price</string>
+    <string name="quantity_book_AddBook">Quantity</string>
+    <string name="description_book_AddBook">Description</string>
+    <string name="tack_price_book_AddBook">Tack Price</string>
+    <string name="add_book_AddBook">Add Book</string>
+</resources>
