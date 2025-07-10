@@ -15,7 +15,15 @@ public class Book {
     private Bitmap bookImage;
     private String Disc;
     private int ownerId;
+    private double totalPriceBook;
 
+    public double getTotalPriceBook() {
+        return totalPriceBook;
+    }
+
+    public void setTotalPriceBook(double totalPriceBook) {
+        this.totalPriceBook = totalPriceBook;
+    }
 
     public Book(int id, String name, double price, int quantity, boolean isTake, double takePrice, Bitmap bookImage, String disc) {
         this.id = id;
@@ -59,6 +67,10 @@ public class Book {
         this.bookImage = bookImage;
         Disc = disc;
         this.ownerId = ownerId;
+    }
+
+    public Book() {
+
     }
 
     public int getOwnerId() {
@@ -132,4 +144,9 @@ public class Book {
     public void setDisc(String disc) {
         Disc = disc;
     }
+
+    public void updateTotalPrice() {
+        this.totalPriceBook = this.price * this.quantity;
+    }
+
 }

@@ -4,9 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class Utilities {
 
+    public static ArrayList<Book> booksCart = new ArrayList<>();
     public static byte[] bitmapToBytes(Bitmap bitmap) {
         if (bitmap != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();

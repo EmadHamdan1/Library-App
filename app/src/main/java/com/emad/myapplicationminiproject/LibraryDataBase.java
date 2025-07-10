@@ -215,6 +215,21 @@ public class LibraryDataBase extends SQLiteOpenHelper {
         return db.update(BOOKS_TABLE, cv, ID_COLUMN + " = ?", new String[]{String.valueOf(book.getId())});
     }
 
+    // Update Quantity Book
+    public int updateQuantityBookMinus(Book book, int count) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(QUANTITY_COLUMN, book.getQuantity() - count);
+        return db.update(BOOKS_TABLE, cv, ID_COLUMN + " = ?", new String[]{String.valueOf(book.getId())});
+    }
+
+    public int updateQuantityBookPlus(Book book, int count) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(QUANTITY_COLUMN, book.getQuantity() + count);
+        return db.update(BOOKS_TABLE, cv, ID_COLUMN + " = ?", new String[]{String.valueOf(book.getId())});
+    }
+
 
     //Read All Books
     public ArrayList<Book> readAllBooks() {
@@ -282,4 +297,33 @@ public class LibraryDataBase extends SQLiteOpenHelper {
         cursor.close();
         return books;
     }
+
+    public Book getBookById(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM books WHERE id = ?", new String[]{String.valueOf(id)});
+        Bitmap image = null;
+        Book book = null;
+        if (cursor.moveToFirst()) {
+            int bookId = cursor.getInt(cursor.getColumnIndexOrThrow(ID_COLUMN));
+            int owner_id = cursor.getInt(cursor.getColumnIndexOrThrow(OWNER_ID_COLUMN));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(NAME_COLUMN));
+            double price = cursor.getDouble(cursor.getColumnIndexOrThrow(PRICE_COLUMN));
+            double takePrice = cursor.getDouble(cursor.getColumnIndexOrThrow(TAKEPRICE_COLUMN));
+            int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(QUANTITY_COLUMN));
+            int isTakeInt = cursor.getInt(cursor.getColumnIndexOrThrow(ISTAKE_COLUMN));
+            boolean isTake = (isTakeInt == 1);
+            String discrip = cursor.getString(cursor.getColumnIndexOrThrow(DISCRIP_COLUMN));
+            byte[] imageAsByte = cursor.getBlob(cursor.getColumnIndexOrThrow(IMAGE_COLUMN));
+
+            if (imageAsByte != null) {
+                image = Utilities.bytesToBitmap(imageAsByte);
+            }
+
+            book = new Book(bookId, name, price, quantity, isTake, takePrice, image, discrip, owner_id);
+        }
+
+        cursor.close();
+        return book;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.emad.myapplicationminiproject;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -54,6 +55,10 @@ public class DetailsBookActivity extends AppCompatActivity {
             binding.quantityTv.setText(String.valueOf(count));
         });
 
+        binding.addToCartBtDetails.setOnClickListener(view -> {
+            AddBookToCart();
+        });
+
     }
 
     void addQuantity() {
@@ -69,5 +74,58 @@ public class DetailsBookActivity extends AppCompatActivity {
 
     }
 
+    void AddBookToCart() {
+
+        try {
+
+            if (count <= 0) {
+                Toast.makeText(this, "Add Quantity Book", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Book bookCart = new Book();
+            bookCart.setId(book.getId());
+
+            boolean isFind = true;
+            for (int i = 0; i < Utilities.booksCart.size(); i++) {
+                Book bookOld = Utilities.booksCart.get(i);
+                if (Utilities.booksCart.get(i).getId() == book.getId()) {
+
+                    isFind = false;
+                    bookOld.setQuantity(bookOld.getQuantity() + count);
+                    db.updateQuantityBookMinus(book, count);
+                    bookOld.updateTotalPrice();
+                    break;
+
+                }
+            }
+
+            if (isFind) {
+
+                bookCart.setBookImage(book.getBookImage());
+                bookCart.setName(book.getName());
+                bookCart.setPrice(book.getPrice());
+                bookCart.setQuantity(count);
+                bookCart.setTotalPriceBook(book.getPrice() * count);
+                boolean isAdd = Utilities.booksCart.add(bookCart);
+
+                if (isAdd) {
+
+                    db.updateQuantityBookMinus(book, count);
+                    Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(this, "Added Filed", Toast.LENGTH_SHORT).show();
+                }
+
+            } else {
+                Toast.makeText(this, "Added Quantity Successfully", Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

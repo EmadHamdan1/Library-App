@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,6 +21,16 @@ import com.emad.myapplicationminiproject.databinding.ActivityHomeBinding;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements BookListener {
+
+    ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult o) {
+                    notifyChanges();
+                }
+            }
+    );
 
     ActivityHomeBinding binding;
     LibraryDataBase db;
@@ -43,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements BookListener {
             Toast.makeText(this, "User data not received", Toast.LENGTH_LONG).show();
             return;
         }
+
         binding.nameTvHome.setText(user.getName());
 
         binding.goodTv.setOnClickListener(view -> {
@@ -52,6 +67,13 @@ public class HomeActivity extends AppCompatActivity implements BookListener {
         adapterV = new HomeBookAdapterV(books, this);
         binding.booksRvHomeV.setAdapter(adapterV);
         binding.booksRvHomeV.setLayoutManager(new LinearLayoutManager(this));
+
+        binding.cartIvHome.setOnClickListener(view -> {
+
+            Intent intent = new Intent(getBaseContext(), CartActivity.class);
+            launcher.launch(intent);
+
+        });
 
     }
 
@@ -84,6 +106,13 @@ public class HomeActivity extends AppCompatActivity implements BookListener {
     public void onItemBook(int pos) {
         Intent intent = new Intent(getApplicationContext(), DetailsBookActivity.class);
         intent.putExtra("bookPos", pos);
-        startActivity(intent);
+        launcher.launch(intent);
     }
+
+    void notifyChanges() {
+        books = db.readAllBooks();
+        adapterV = new HomeBookAdapterV(books, this);
+        binding.booksRvHomeV.setAdapter(adapterV);
+    }
+
 }
